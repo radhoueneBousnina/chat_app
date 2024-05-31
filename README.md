@@ -69,8 +69,8 @@ This is a real-time chat application built using Python, Django, and Redis. The 
 
 ## Usage Instructions
 1.  **Register or Login**
-   - Open the application in your browser.
-   - Register a new user by providing your name, last name, and email and password or login with yoy credentials.
+   - Open the application in your browser on http://127.0.0.1:8000/.
+   - Register a new user by providing your name, last name, and email and password or login with your credentials.
 
 2. **Create Another User**
 - To chat, create another user (use an incognito window for convenience).
