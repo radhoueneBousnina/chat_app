@@ -76,5 +76,8 @@ jobs:
     - name: Build and push Docker image
       run: docker-compose build
 
+    - name: Start Docker services
+      run: docker-compose up -d
+
     - name: Run Django tests
       run: docker-compose exec web python manage.py test
