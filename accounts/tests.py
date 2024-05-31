@@ -53,7 +53,6 @@ class UserRegistrationTests(TestCase):
 
     def test_registration_missing_fields(self):
         response = self.client.post(self.registration_url, {
-            # 'first_name': '',
             'last_name': 'user',
             'email': 'testuser@exampletest.com',
             'password': 'password123',
