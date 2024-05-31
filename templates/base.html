@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home Page - Chat App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+     <div class="navbar">
+        <div class="navbar-brand">
+            <a href="{% url 'chat:index' %}">CHAT APP</a>
+        </div>
+
+        <div class="navbar-links">
+            <a href="{% url 'chat:index' %}">Home</a>
+            <a href="#">{{ request.user.first_name|title }} {{ request.user.last_name|title }}</a>
+            <form action="{% url 'accounts:logout' %}" method="post" class="logout-form">
+              {% csrf_token %}
+              <button type="submit" class="logout-button">Log Out</button>
+            </form>
+
+        </div>
+    </div>
+
+     
+     {% block content %}
+     {% endblock content %}
+</body>
+</html>
+
