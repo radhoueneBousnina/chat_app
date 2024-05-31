@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	  <div class="container" style="margin-top: 100px">
+        <h2>{{ first_name|title  }} {{ last_name|title  }}</h2>
+        <div id="chat-messages"></div>
+        <form id="chat-form">
+            <input type="text" id="chat-input" autocomplete="off" placeholder="Type your message here..." required>
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </div>
+    <script>
+        const roomId = "{{ room_id }}";
+
+        const chatSocket = new WebSocket(
+            'ws://' + window.location.host + '/ws/chat/' + roomId + '/'
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            console.log(data);
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            console.log(data.user_id);
+            if (data.user_id === {{ request.user.id }}) {
+                messageElement.classList.add('my-message');
+            } else {
+                messageElement.classList.add('other-message');
+            }
+            messageElement.textContent = `${data.user_first_name } ${data.user_last_name }: ${data.message}`;
+            document.getElementById('chat-messages').appendChild(messageElement);
+            scrollToBottom();
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.getElementById('chat-form').onsubmit = function(e) {
+            e.preventDefault();
+            const messageInputDom = document.getElementById('chat-input');
+            const message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInputDom.value = '';
+        };
+        function scrollToBottom() {
+            const messagesContainer = document.getElementById('chat-messages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Scroll to the bottom when the page is loaded
+        window.onload = scrollToBottom;
+    </script>
+{% endblock %}
