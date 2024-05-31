@@ -77,4 +77,4 @@ jobs:
       run: docker-compose build
 
     - name: Run Django tests
-      run: docker-compose run web make test
+      run: docker-compose exec web python manage.py test
