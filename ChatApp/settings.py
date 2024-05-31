@@ -197,3 +197,12 @@ LOGGING = {
 
     },
 }
+
+##### SILK ####
+INSTALLED_APPS += [
+    "silk",
+]
+MIDDLEWARE += [
+    "silk.middleware.SilkyMiddleware",
+]
+SILKY_PYTHON_PROFILER = True
