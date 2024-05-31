@@ -30,9 +30,13 @@ This is a real-time chat application built using Python, Django, and Redis. The 
 ### Steps
 1. **Clone the Repository**
    ```sh
-   git clone <your-repo-url>
-   cd <your-repo-directory>
+   git clone git@github.com:radhoueneBousnina/chat_app.git
+   cd chat_app
    ```
+   
+2. **Environment Variables**
+- Create a ```.env``` file in the project root directory based on the ```.env.example``` template.
+- Replace the placeholder values in the ```.env``` file with your actual environment variables (shared privately). Ensure to keep sensitive information secure.
 
 2. **Build and Run the Application**
 
@@ -47,7 +51,7 @@ This is a real-time chat application built using Python, Django, and Redis. The 
 3. You can Create a Superuser
    - Using Make:
       ```sh
-         make run
+         make superuser
       ```
    - Or using Docker Compose directly:
       ```sh
@@ -56,7 +60,7 @@ This is a real-time chat application built using Python, Django, and Redis. The 
 4. You can run Tests
     - Using Make:
       ```sh
-         make run
+         make test
       ```
    - Or using Docker Compose directly:
       ```sh
@@ -80,9 +84,9 @@ This is a real-time chat application built using Python, Django, and Redis. The 
 
 ## Additional Commands
 
-- You can find additional command in ```Makefile```
+- You can find additional commands in ```Makefile```
 
-## Additional Commands
+## Monitoring
 
 - Visit ```/silk``` on your local server to access SILK monitoring.
 
