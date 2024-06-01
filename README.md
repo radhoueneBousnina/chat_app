@@ -48,7 +48,7 @@ This is a real-time chat application built using Python, Django, and Redis. The 
    ```sh
     docker-compose up --build
    ```
-3. You can Create a Superuser
+3. **You can Create a Superuser**
    - Using Make:
       ```sh
          make superuser
@@ -57,7 +57,7 @@ This is a real-time chat application built using Python, Django, and Redis. The 
       ```sh
         docker-compose exec web python manage.py createsuperuser
       ```
-4. You can run Tests
+4. **You can run Tests**
     - Using Make:
       ```sh
          make test
